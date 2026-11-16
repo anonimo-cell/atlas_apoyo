@@ -1,0 +1,410 @@
+/* =========================================================================
+   VARIABLES (mismos colores que el Atlas de apoyo Parkinson)
+   ========================================================================= */
+:root {
+  --azul: #204555;
+  --azul-claro: #a9e1f2;
+  --crema: #f7f9e3;
+  --naranja: #ffc17a;
+  --melocoton: #ffe8cd;
+  --texto: #1a1a1a;
+  --fondo: #ffffff;
+  --tamano-fuente-base: 100%;
+}
+
+/* Modo alto contraste */
+html.alto-contraste {
+  --azul: #000000;
+  --azul-claro: #ffff00;
+  --crema: #000000;
+  --naranja: #ffff00;
+  --melocoton: #000000;
+  --texto: #ffffff;
+  --fondo: #000000;
+}
+
+/* =========================================================================
+   BASE
+   ========================================================================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: var(--tamano-fuente-base);
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  line-height: 1.6;
+  color: var(--texto);
+  background: var(--fondo);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+h1, h2, h3 {
+  line-height: 1.2;
+  color: var(--azul);
+}
+
+html.alto-contraste h1,
+html.alto-contraste h2,
+html.alto-contraste h3 {
+  color: var(--naranja);
+}
+
+.contenedor {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+:focus-visible {
+  outline: 3px solid var(--naranja);
+  outline-offset: 3px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.saltar-contenido {
+  position: absolute;
+  left: 16px;
+  top: -100px;
+  z-index: 100;
+  padding: 12px 16px;
+  background: var(--naranja);
+  color: #000;
+  font-weight: 700;
+  border-radius: 6px;
+}
+
+.saltar-contenido:focus {
+  top: 12px;
+}
+
+main:focus {
+  outline: none;
+}
+
+/* =========================================================================
+   CABECERA
+   ========================================================================= */
+.cabecera {
+  background: var(--azul);
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+html.alto-contraste .cabecera {
+  border-bottom: 2px solid var(--naranja);
+}
+
+.cabecera-interior {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.marca {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.marca-logo {
+  width: 44px;
+  height: 44px;
+}
+
+.controles-acce {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.btn-acce {
+  min-height: 44px;
+  min-width: 44px;
+  padding: 8px 14px;
+  font: inherit;
+  font-weight: 700;
+  color: var(--azul);
+  background: var(--crema);
+  border: 2px solid var(--crema);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+html.alto-contraste .btn-acce {
+  color: #000;
+  background: var(--naranja);
+}
+
+.btn-acce:hover,
+.btn-acce[aria-pressed="true"] {
+  background: var(--naranja);
+  border-color: var(--naranja);
+  color: #000;
+}
+
+/* =========================================================================
+   PORTADA
+   ========================================================================= */
+.portada {
+  background: var(--crema);
+  padding: 56px 0;
+}
+
+html.alto-contraste .portada {
+  border-bottom: 2px solid var(--naranja);
+}
+
+.portada-interior {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.portada-logo {
+  flex-shrink: 0;
+}
+
+.portada h1 {
+  font-size: clamp(2rem, 6vw, 3.25rem);
+  margin: 0 0 12px;
+}
+
+.portada-texto {
+  font-size: 1.2rem;
+  max-width: 60ch;
+  margin: 0 0 24px;
+}
+
+.btn-principal,
+.btn-tarjeta {
+  display: inline-block;
+  padding: 12px 24px;
+  font-weight: 700;
+  text-decoration: none;
+  color: #fff;
+  background: var(--azul);
+  border: 2px solid var(--azul);
+  border-radius: 8px;
+}
+
+.btn-principal:hover,
+.btn-tarjeta:hover {
+  background: var(--naranja);
+  border-color: var(--naranja);
+  color: #000;
+}
+
+html.alto-contraste .btn-principal,
+html.alto-contraste .btn-tarjeta {
+  background: var(--naranja);
+  border-color: var(--naranja);
+  color: #000;
+}
+
+/* =========================================================================
+   SECCIONES
+   ========================================================================= */
+.seccion {
+  padding: 56px 0;
+}
+
+.seccion h2 {
+  font-size: 2rem;
+  margin: 0 0 8px;
+}
+
+.seccion-intro {
+  margin: 0 0 24px;
+}
+
+.seccion-clara {
+  background: var(--melocoton);
+}
+
+html.alto-contraste .seccion-clara {
+  border-top: 2px solid var(--naranja);
+  border-bottom: 2px solid var(--naranja);
+}
+
+/* Tarjetas de atlas */
+.tarjetas {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
+  gap: 24px;
+}
+
+.tarjeta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 24px;
+  border: 2px solid var(--azul);
+  border-left: 8px solid var(--naranja);
+  border-radius: 12px;
+  background: var(--fondo);
+}
+
+html.alto-contraste .tarjeta {
+  border-color: var(--naranja);
+}
+
+.tarjeta h3 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.tarjeta p {
+  margin: 0 0 12px;
+  flex-grow: 1;
+}
+
+.tarjeta-proxima {
+  border-style: dashed;
+  border-left-style: solid;
+  border-left-color: var(--azul-claro);
+}
+
+.etiqueta {
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--azul-claro);
+  color: #000;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+/* Columnas "Qué es" */
+.columnas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+  gap: 24px;
+  margin-top: 16px;
+}
+
+.columnas h3 {
+  margin: 0 0 4px;
+}
+
+.columnas p {
+  margin: 0;
+}
+
+/* Logos de colaboradores */
+.logos {
+  list-style: none;
+  padding: 0;
+  margin: 24px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 40px;
+}
+
+.logos img {
+  max-height: 80px;
+  width: auto;
+}
+
+html.alto-contraste .logos li {
+  background: #fff;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+/* =========================================================================
+   PIE
+   ========================================================================= */
+.pie {
+  background: var(--azul);
+  color: #fff;
+  padding: 24px 0;
+  text-align: center;
+}
+
+html.alto-contraste .pie {
+  border-top: 2px solid var(--naranja);
+}
+
+.pie p {
+  margin: 0;
+}
+
+/* =========================================================================
+   MÓVIL
+   ========================================================================= */
+@media (max-width: 700px) {
+  .portada {
+    padding: 36px 0;
+  }
+
+  .portada-interior {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .portada-logo {
+    width: 110px;
+    height: 110px;
+  }
+
+  .portada-texto {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .seccion {
+    padding: 40px 0;
+  }
+
+  .marca-nombre {
+    font-size: 1.1rem;
+  }
+
+  .logos {
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
