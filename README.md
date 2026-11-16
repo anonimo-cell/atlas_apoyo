@@ -13,7 +13,7 @@ index.html                    Página principal
 javascript/accesibilidad.js   Menú de accesibilidad y modales
 svg/                          Logos e iconos (svg/cate: icono de cada atlas)
 img/logos/                    Logos de colaboradores
-.github/workflows/static.yml  Publicación automática en GitHub Pages
+.github/workflows/jekyll-gh-pages.ymlPublicación automática en GitHub Pages
 ```
 
 ## Ver en local
