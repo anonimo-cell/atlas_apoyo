@@ -10,8 +10,8 @@ Web publicada: https://anonimo-cell.github.io/atlas_apoyo/
 ```
 index.html                    Página principal
 0_css/estilos.css             Estilos
-javascript/accesibilidad.js   Tamaño de texto y alto contraste
-svg/                          Logos del proyecto
+javascript/accesibilidad.js   Menú de accesibilidad y modales
+svg/                          Logos e iconos (svg/cate: icono de cada atlas)
 img/logos/                    Logos de colaboradores
 .github/workflows/static.yml  Publicación automática en GitHub Pages
 ```

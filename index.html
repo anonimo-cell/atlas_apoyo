@@ -4,114 +4,144 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Atlas de Apoyo</title>
-  <meta name="description" content="Atlas de Apoyo: catálogos accesibles de productos de apoyo para personas con distintas necesidades.">
+  <title>Atlas de apoyo</title>
+  <meta name="description" content="Atlas de apoyo: elige el atlas de productos de apoyo que quieres consultar (discapacidad visual, auditiva, motriz, Parkinson...).">
   <link rel="icon" type="image/svg+xml" href="svg/logo-atlas-de-apoyo.svg">
   <link rel="stylesheet" href="0_css/estilos.css">
 </head>
 
 <body>
 
-  <!-- SALTAR AL CONTENIDO (WCAG 2.4.1) -->
+  <!--SALTAR AL CONTENIDO (WCAG 2.4.1)-->
   <a class="saltar-contenido" href="#contenido-principal">Saltar al contenido principal</a>
 
-  <!-- CABECERA -->
-  <header class="cabecera">
-    <div class="contenedor cabecera-interior">
-      <a href="#inicio" class="marca" aria-label="Atlas de Apoyo, ir al inicio">
-        <img src="svg/logo-atlas-de-apoyo-claro.svg" alt="" class="marca-logo">
-        <span class="marca-nombre">Atlas de Apoyo</span>
-      </a>
-
-      <!-- Controles de accesibilidad -->
-      <div class="controles-acce" role="group" aria-label="Opciones de accesibilidad">
-        <button type="button" class="btn-acce" id="btn-menos" aria-label="Reducir tamaño del texto">A−</button>
-        <button type="button" class="btn-acce" id="btn-mas" aria-label="Aumentar tamaño del texto">A+</button>
-        <button type="button" class="btn-acce" id="btn-contraste" aria-pressed="false">Alto contraste</button>
-      </div>
+  <!--BARRA SUPERIOR-->
+  <header class="barra-superior">
+    <div class="eslogan-barra">
+      <img src="svg/logo-atlas-de-apoyo-claro.svg" alt="" class="logo-barra">
+      <p class="titulo-barra">Atlas de apoyo</p>
     </div>
+    <!--En el móvil el lateral desaparece: el menú de accesibilidad se abre desde aquí-->
+    <button type="button" class="btn-acce-movil" aria-haspopup="dialog" data-abrir="modal-acce">
+      <img src="svg/accesibilidad/acces.svg" alt="" class="cap-icon-acce-movil">
+      <span>Accesibilidad</span>
+    </button>
   </header>
 
-  <main id="contenido-principal" tabindex="-1">
+  <!--MENÚ LATERAL DERECHO-->
+  <aside class="lateral" aria-label="Accesibilidad e información">
+    <button type="button" class="side-btn" aria-haspopup="dialog" data-abrir="modal-acce" title="Menú de accesibilidad">
+      <img src="svg/accesibilidad/acces.svg" class="cap-icon-lateral" alt="">
+      <span class="sr-only">Menú de accesibilidad</span>
+    </button>
+    <button type="button" class="side-btn" aria-haspopup="dialog" data-abrir="modal-info" title="Información">
+      <img src="svg/lat_dech/info.svg" class="cap-icon-lateral" alt="">
+      <span class="sr-only">Información</span>
+    </button>
+  </aside>
 
-    <!-- PORTADA -->
-    <section id="inicio" class="portada">
-      <div class="contenedor portada-interior">
-        <img src="svg/logo-atlas-de-apoyo.svg" alt="" class="portada-logo" width="160" height="160">
-        <div>
-          <h1>Atlas de Apoyo</h1>
-          <p class="portada-texto">
-            Catálogos accesibles de productos de apoyo pensados para facilitar la vida diaria,
-            la autonomía y la comunicación de las personas que los necesitan.
-          </p>
-          <a href="#atlas" class="btn-principal">Ver los atlas</a>
-        </div>
-      </div>
-    </section>
+  <!--CONTENIDO PRINCIPAL-->
+  <main id="contenido-principal" class="contenido" tabindex="-1">
+    <div class="cabecera-titulo">
+      <img src="svg/logo-atlas-de-apoyo.svg" class="cap-icon-titulo" alt="">
+      <h1 class="titulo">¿Qué atlas quieres ver?</h1>
+    </div>
+    <p class="subtitulo">Elige el tipo de necesidad para ver sus productos de apoyo.</p>
 
-    <!-- LISTADO DE ATLAS -->
-    <section id="atlas" class="seccion" aria-labelledby="titulo-atlas">
-      <div class="contenedor">
-        <h2 id="titulo-atlas">Nuestros atlas</h2>
-        <p class="seccion-intro">Elige el atlas que quieres consultar.</p>
-
-        <ul class="tarjetas">
-          <li class="tarjeta">
-            <h3>Parkinson</h3>
-            <p>Productos de apoyo para el autocuidado, la comunicación, la movilidad y el aprendizaje de personas con Parkinson.</p>
-            <a class="btn-tarjeta" href="https://anonimo-cell.github.io/atlas_apoyo_parkinson/">
-              Entrar al atlas<span class="sr-only"> de Parkinson</span>
-            </a>
-          </li>
-          <li class="tarjeta tarjeta-proxima">
-            <h3>Próximamente</h3>
-            <p>Estamos preparando nuevos atlas para otras necesidades y colectivos.</p>
-            <span class="etiqueta">En preparación</span>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- QUÉ ES -->
-    <section id="sobre" class="seccion seccion-clara" aria-labelledby="titulo-sobre">
-      <div class="contenedor">
-        <h2 id="titulo-sobre">¿Qué es Atlas de Apoyo?</h2>
-        <div class="columnas">
-          <div>
-            <h3>Información clara</h3>
-            <p>Cada producto se presenta con fotos, descripción y pasos de uso sencillos.</p>
-          </div>
-          <div>
-            <h3>Accesible para todos</h3>
-            <p>Diseñado siguiendo las pautas WCAG: tamaño de texto ajustable, alto contraste y navegación con teclado.</p>
-          </div>
-          <div>
-            <h3>Hecho en colaboración</h3>
-            <p>Desarrollado junto a universidades y asociaciones de pacientes.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- COLABORADORES -->
-    <section class="seccion" aria-labelledby="titulo-colab">
-      <div class="contenedor">
-        <h2 id="titulo-colab">Colaboradores</h2>
-        <ul class="logos">
-          <li><img src="img/logos/upm.png" alt="Universidad Politécnica de Madrid"></li>
-          <li><img src="img/logos/urjc.png" alt="Universidad Rey Juan Carlos"></li>
-          <li><img src="img/logos/asociacion-parkinson-madrid.png" alt="Asociación Parkinson Madrid"></li>
-        </ul>
-      </div>
-    </section>
-
+    <ul class="grid-capsulas">
+      <li>
+        <a class="btn-cate" href="https://anonimo-cell.github.io/atlas_apoyo_parkinson/">
+          <span class="btn-cate-txt">Parkinson</span>
+          <img src="svg/cate/parkinson.svg" class="cap-icon-cate" alt="">
+        </a>
+      </li>
+      <li>
+        <span class="btn-cate btn-cate-proximo" aria-disabled="true">
+          <span class="btn-cate-txt">Discapacidad visual</span>
+          <img src="svg/cate/visual.svg" class="cap-icon-cate" alt="">
+          <span class="etiqueta-proximo">Próximamente</span>
+        </span>
+      </li>
+      <li>
+        <span class="btn-cate btn-cate-proximo" aria-disabled="true">
+          <span class="btn-cate-txt">Discapacidad auditiva</span>
+          <img src="svg/cate/auditiva.svg" class="cap-icon-cate" alt="">
+          <span class="etiqueta-proximo">Próximamente</span>
+        </span>
+      </li>
+      <li>
+        <span class="btn-cate btn-cate-proximo" aria-disabled="true">
+          <span class="btn-cate-txt">Discapacidad motriz</span>
+          <img src="svg/cate/motriz.svg" class="cap-icon-cate" alt="">
+          <span class="etiqueta-proximo">Próximamente</span>
+        </span>
+      </li>
+      <li>
+        <span class="btn-cate btn-cate-proximo" aria-disabled="true">
+          <span class="btn-cate-txt">Discapacidad cognitiva</span>
+          <img src="svg/cate/cognitiva.svg" class="cap-icon-cate" alt="">
+          <span class="etiqueta-proximo">Próximamente</span>
+        </span>
+      </li>
+      <li>
+        <span class="btn-cate btn-cate-proximo" aria-disabled="true">
+          <span class="btn-cate-txt">Personas mayores</span>
+          <img src="svg/cate/mayores.svg" class="cap-icon-cate" alt="">
+          <span class="etiqueta-proximo">Próximamente</span>
+        </span>
+      </li>
+    </ul>
   </main>
 
   <footer class="pie">
-    <div class="contenedor">
-      <p>© <span id="anio">2026</span> Atlas de Apoyo</p>
-    </div>
+    <ul class="logos" aria-label="Colaboradores">
+      <li><img src="img/logos/upm.png" alt="Universidad Politécnica de Madrid"></li>
+      <li><img src="img/logos/urjc.png" alt="Universidad Rey Juan Carlos"></li>
+      <li><img src="img/logos/asociacion-parkinson-madrid.png" alt="Asociación Parkinson Madrid"></li>
+    </ul>
+    <p>© <span id="anio">2026</span> Atlas de apoyo</p>
   </footer>
+
+  <!--MODAL: MENÚ DE ACCESIBILIDAD-->
+  <dialog id="modal-acce" class="modal" aria-labelledby="titulo-modal-acce">
+    <div class="modal-cabecera">
+      <h2 id="titulo-modal-acce" class="titulo-modal">Menú de accesibilidad</h2>
+      <button type="button" class="btn-cerrar" data-cerrar aria-label="Cerrar menú de accesibilidad">&times;</button>
+    </div>
+    <div class="grid-acce">
+      <button type="button" class="side-btn-acce" id="btn-mas">
+        <span class="icono-acce" aria-hidden="true">A+</span>Aumentar texto
+      </button>
+      <button type="button" class="side-btn-acce" id="btn-menos">
+        <span class="icono-acce" aria-hidden="true">A−</span>Reducir texto
+      </button>
+      <button type="button" class="side-btn-acce" id="btn-contraste" aria-pressed="false">
+        <span class="icono-acce" aria-hidden="true">◐</span>Alto contraste
+      </button>
+      <button type="button" class="side-btn-acce" id="btn-restablecer">
+        <span class="icono-acce" aria-hidden="true">↺</span>Restablecer
+      </button>
+    </div>
+  </dialog>
+
+  <!--MODAL: INFORMACIÓN-->
+  <dialog id="modal-info" class="modal" aria-labelledby="titulo-modal-info">
+    <div class="modal-cabecera">
+      <h2 id="titulo-modal-info" class="titulo-modal">Información</h2>
+      <button type="button" class="btn-cerrar" data-cerrar aria-label="Cerrar información">&times;</button>
+    </div>
+    <p>
+      <strong>Atlas de apoyo</strong> reúne catálogos accesibles de productos de apoyo, tanto comercializados
+      como de bajo coste, para facilitar la vida diaria y la autonomía de las personas que los necesitan.
+    </p>
+    <p>
+      Cada atlas está dedicado a un tipo de necesidad. Ya puedes consultar el de Parkinson; el resto
+      se irán publicando próximamente.
+    </p>
+  </dialog>
+
+  <!--AVISOS PARA LECTORES DE PANTALLA-->
+  <div id="anuncio-accesible" class="sr-only" role="status" aria-live="polite"></div>
 
   <script src="javascript/accesibilidad.js"></script>
 </body>
