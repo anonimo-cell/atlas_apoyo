@@ -6196,6 +6196,22 @@ img[role="button"] {
   cursor: pointer;
 }
 
+.menu-movil-btn-pie:disabled {
+  cursor: not-allowed;
+}
+
+.menu-movil-btn-texto {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.menu-movil-btn-texto small {
+  font-size: 0.72rem;
+  font-weight: normal;
+}
+
 .menu-movil-btn-pie[hidden] {
   display: none;
 }
@@ -6893,4 +6909,12 @@ html.acc-espaciado p {
   height: 40px;
   width: 40px;
   flex: none;
+}
+
+#vista-ver .grid-capsulas > .btn-cate[hidden] {
+  display: none !important;
+}
+
+#vista-ver .grid-capsulas > .btn-cate.enlace-pendiente {
+  cursor: default;
 }
