@@ -4325,7 +4325,7 @@ img[role="button"] {
   /* ---------- 1. Estructura general ---------- */
   body {
     padding-top: 0 !important;
-    padding-bottom: 104px !important;   /* hueco para el menú inferior fijo */
+    padding-bottom: 24px !important;
   }
 
   /* Rejilla de 2 columnas: solo los dos botones de menú usan una columna
@@ -4889,9 +4889,9 @@ img[role="button"] {
     top: 58px !important;
   }
 
-  /* Contenido y columnas laterales: 16px por debajo del menú (que acaba en 124px) */
+  /* Sin menú inferior; deja solo una separación corta bajo la cabecera. */
   .subvista-contenido {
-    margin-top: 100px !important;
+    margin-top: 20px !important;
   }
 
   .lateral_acce,
@@ -5082,10 +5082,10 @@ img[role="button"] {
     margin-left: 0;
   }
 
-  /* El menú acaba ahora en 144px (58 + 86): todo baja 20px */
+  /* La cabecera superior mide unos 58px; deja espacio para que no se solape. */
   .subvista-contenido {
-    margin-top: 120px !important;
-    min-height: calc(100vh - 176px);
+    margin-top: 80px !important;
+    min-height: calc(100vh - 136px);
   }
 
   .lateral_izq {
@@ -6074,15 +6074,15 @@ img[role="button"] {
     text-align: left !important;
   }
 
-  /* Sin título repetido en "Ver productos" y "Difundir productos" */
-  #vista-ver .cabecera-superior-icono,
+  /* La pantalla de selección mantiene su título; la pantalla de subida conserva
+     el comportamiento anterior. */
   #vista-subir .cabecera-superior-icono {
     display: none !important;
   }
 
   #vista-ver .grid-linea-superior,
   #vista-subir .grid-linea-superior {
-    grid-template-areas: "busqueda busqueda busqueda";
+    grid-template-areas: "titulo titulo titulo";
   }
 }
 
@@ -6146,6 +6146,47 @@ img[role="button"] {
     border-top-right-radius: 26px !important;
     border-bottom-right-radius: 26px !important;
   }
+}
+
+@media (min-width: 700px) {
+  #vista-ver .grid-linea-superior {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto;
+    grid-template-areas: "titulo";
+  }
+
+  #vista-ver .grid-linea-superior > .cabecera-superior-icono {
+    grid-area: titulo;
+    justify-self: stretch;
+    align-items: center;
+  }
+}
+
+#vista-ver.subvista-contenido {
+  padding-top: 8px !important;
+}
+
+#vista-ver .linea_superior {
+  margin-bottom: 20px;
+}
+
+#vista-ver .cabecera-superior-icono,
+#vista-ver .text-linea-superior {
+  width: 100%;
+}
+
+#vista-ver .cabecera-superior-icono {
+  align-items: center;
+  justify-content: center;
+}
+
+#vista-ver .text-linea-superior,
+#vista-ver .titulo-linea-superior {
+  text-align: center !important;
+}
+
+#vista-ver .text-linea-superior {
+  align-items: center !important;
 }
 
 /* Menú del teléfono: "Cerrar sesión" en rojo, igual que en la cabecera

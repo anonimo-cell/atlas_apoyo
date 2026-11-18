@@ -1,5 +1,5 @@
 function pintarBotonLogin() {
-    const sesionIniciada = sessionStorage.getItem('sesionIniciada') === '1';
+    const sesionIniciada = localStorage.getItem('sesionIniciada') === '1';
     const textoSesion = sesionIniciada ? 'Cerrar sesión' : 'Iniciar sesión';
     const boton = document.getElementById('mi-boton-login');
     const textoMovil = document.getElementById('menu-movil-sesion-texto');
@@ -17,7 +17,7 @@ function pintarBotonLogin() {
 }
 
 async function gestionarClickLogin() {
-    if (sessionStorage.getItem('sesionIniciada') === '1') {
+    if (localStorage.getItem('sesionIniciada') === '1') {
         if (!window.supabase || !window.supabase.auth) {
             console.error('No está disponible la conexión de autenticación para cerrar sesión.');
             return;
@@ -46,11 +46,11 @@ function nombreVisibleDe(user) {
 function actualizarEstadoSesion(session) {
     const user = session && session.user;
     if (user) {
-        sessionStorage.setItem('sesionIniciada', '1');
-        sessionStorage.setItem('nombreUsuario', nombreVisibleDe(user));
+        localStorage.setItem('sesionIniciada', '1');
+        localStorage.setItem('nombreUsuario', nombreVisibleDe(user));
     } else {
-        sessionStorage.removeItem('sesionIniciada');
-        sessionStorage.removeItem('nombreUsuario');
+        localStorage.removeItem('sesionIniciada');
+        localStorage.removeItem('nombreUsuario');
     }
     pintarBotonLogin();
 }
@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const mensajeError = document.getElementById('mensaje-error-login-modal');
 
     modalLogin.addEventListener('close', () => {
-        if (sessionStorage.getItem('sesionIniciada') !== '1') {
+        if (localStorage.getItem('sesionIniciada') !== '1') {
             campoUsuario.classList.remove('campo-error');
             campoPass.classList.remove('campo-error');
         }
