@@ -35,7 +35,8 @@
       <div class="botones-login-container">
         <button type="button" id="mi-boton-login" class="btn-login-header"
           onclick="gestionarClickLogin()">Iniciar sesión</button>
-        <span id="btn-solicitud" class="btn-login-header">Registrarse</span>
+        <button type="button" id="btn-solicitud" class="btn-login-header"
+          aria-haspopup="dialog" aria-controls="modal-registro-inicio" onclick="abrirRegistroInicio()">Registrarse</button>
       </div>
     </header>
 
@@ -164,12 +165,11 @@
       </ul>
     </nav>
     <div class="menu-movil-pie">
-      <button type="button" id="menu-movil-registro" class="menu-movil-btn-pie menu-movil-btn-registro" disabled
-        aria-label="Registrarse, no disponible todavía" title="No disponible todavía">
+      <button type="button" id="menu-movil-registro" class="menu-movil-btn-pie menu-movil-btn-registro"
+        aria-haspopup="dialog" aria-controls="modal-registro-inicio" onclick="opcionMenuMovil('registro')">
         <img src="svg/login/registro.svg" alt="" class="menu-movil-icono">
         <span class="menu-movil-btn-texto">
           <span>Registrarse</span>
-          <small>No disponible todavía</small>
         </span>
       </button>
       <button type="button" id="menu-movil-sesion" class="menu-movil-btn-pie menu-movil-btn-sesion"
@@ -213,6 +213,121 @@
         <button type="submit" id="btn-login-modal" class="btn-buscar">Iniciar sesión</button>
       </div>
     </form>
+  </dialog>
+
+  <dialog id="modal-registro-inicio" class="modal-accesible" aria-labelledby="titulo-registro-inicio">
+    <div class="modal-cabecera">
+      <div class="btn-cabecera-linea-modal">
+        <h2 class="btn-titulo-dialog" id="titulo-registro-inicio">Crear cuenta</h2>
+      </div>
+      <button type="button" class="btn-cerrar-modal" aria-label="Cerrar registro" title="Cerrar registro"
+        onclick="cerrarModal(this)">×</button>
+    </div>
+    <div class="modal-cuerpo">
+      <form id="form-registro-inicio" novalidate>
+        <p>Completa tus datos para crear una cuenta. Los campos con * son obligatorios.</p>
+        <div class="registro-inicio-grid">
+          <div class="form-row">
+            <label for="registro-nombre-inicio">Nombre de usuario:<span class="marca-obligatorio" aria-hidden="true">*</span></label>
+            <input type="text" id="registro-nombre-inicio" class="input-moderno" placeholder="Nombre de usuario"
+              autocomplete="username" minlength="4" maxlength="20" required>
+            <p id="error-registro-nombre-inicio" class="mensaje-error-campo" role="alert" hidden></p>
+          </div>
+          <div class="form-row">
+            <label for="registro-email-inicio">Correo electrónico:<span class="marca-obligatorio" aria-hidden="true">*</span></label>
+            <input type="email" id="registro-email-inicio" class="input-moderno"
+              placeholder="Introducir correo electrónico" autocomplete="email" inputmode="email" required>
+            <p id="error-registro-email-inicio" class="mensaje-error-campo" role="alert" hidden></p>
+          </div>
+          <div class="form-row">
+            <label for="registro-password-inicio">Contraseña:<span class="marca-obligatorio" aria-hidden="true">*</span></label>
+            <p id="ayuda-password-registro-inicio" class="ayuda-campo">Mínimo 6 caracteres.</p>
+            <div class="fila-contrasena">
+              <input type="password" id="registro-password-inicio" class="input-moderno"
+                placeholder="Introducir contraseña" autocomplete="new-password" aria-describedby="ayuda-password-registro-inicio" required>
+              <button type="button" class="btn-mostrar" data-password-toggle="registro-password-inicio">Mostrar<span class="sr-only"> contraseña</span></button>
+            </div>
+          </div>
+          <div class="form-row">
+            <label for="registro-password-repite-inicio">Repite la contraseña:<span class="marca-obligatorio" aria-hidden="true">*</span></label>
+            <div class="fila-contrasena">
+              <input type="password" id="registro-password-repite-inicio" class="input-moderno"
+                placeholder="Repetir contraseña" autocomplete="new-password" required>
+              <button type="button" class="btn-mostrar" data-password-toggle="registro-password-repite-inicio">Mostrar<span class="sr-only"> contraseña</span></button>
+            </div>
+            <p id="error-registro-password-inicio" class="mensaje-error-campo" role="alert" hidden></p>
+          </div>
+        </div>
+
+        <fieldset class="registro-perfil-inicio">
+          <legend>Relación con el Parkinson:<span class="marca-obligatorio" aria-hidden="true">*</span></legend>
+          <div class="registro-perfiles-inicio">
+            <button type="button" id="registro-perfil-paciente-inicio" class="btn-rela" data-perfil="paciente" aria-pressed="false">Paciente</button>
+            <button type="button" class="btn-rela" data-perfil="terapeuta" aria-pressed="false">Terapeuta ocupacional</button>
+            <button type="button" class="btn-rela" data-perfil="familiar" aria-pressed="false">Familiar o cercano</button>
+            <button type="button" class="btn-rela" data-perfil="cuidador" aria-pressed="false">Cuidador</button>
+            <button type="button" class="btn-rela" data-perfil="otro" aria-pressed="false">Otro</button>
+          </div>
+          <p id="error-registro-perfil-inicio" class="mensaje-error-campo" role="alert" hidden></p>
+        </fieldset>
+
+        <div class="form-row">
+          <label for="registro-fundacion-inicio">Fundación o asociación (opcional):</label>
+          <input type="text" id="registro-fundacion-inicio" class="input-moderno"
+            placeholder="Si perteneces a alguna asociación, escríbela por favor" maxlength="30">
+        </div>
+        <p id="mensaje-error-registro-inicio" class="mensaje-error-campo" role="alert" hidden></p>
+        <div class="buscar-espacio">
+          <button type="submit" id="btn-crear-cuenta-inicio" class="btn-buscar">Crear cuenta</button>
+        </div>
+      </form>
+
+      <section id="registro-verificacion-inicio" aria-labelledby="titulo-verificacion-inicio" hidden>
+        <h3 id="titulo-verificacion-inicio">Revisa tu correo</h3>
+        <p>Te hemos enviado un código a <strong id="email-verificacion-inicio"></strong>. Escríbelo aquí para confirmar tu cuenta.</p>
+        <p>Si no lo ves, revisa la carpeta de correo no deseado (spam).</p>
+        <div class="form-row">
+          <label for="codigo-verificacion-inicio">Código:<span class="marca-obligatorio" aria-hidden="true">*</span></label>
+          <input type="text" id="codigo-verificacion-inicio" class="input-moderno"
+            placeholder="Introducir código" inputmode="numeric" autocomplete="one-time-code" maxlength="10">
+          <p id="error-codigo-verificacion-inicio" class="mensaje-error-campo" role="alert" hidden></p>
+          <p id="estado-reenvio-codigo-inicio" class="confirmacion-texto" role="status" hidden></p>
+        </div>
+        <div class="registro-inicio-acciones">
+          <button type="button" id="btn-confirmar-cuenta-inicio" class="btn-buscar">Confirmar cuenta</button>
+          <button type="button" id="btn-reenviar-codigo-inicio" class="btn-mostrar">Reenviar código</button>
+        </div>
+      </section>
+
+      <section id="registro-exito-inicio" aria-labelledby="titulo-exito-registro-inicio" hidden>
+        <h3 id="titulo-exito-registro-inicio">Cuenta confirmada</h3>
+        <p id="texto-exito-registro-inicio" role="status"></p>
+        <div class="buscar-espacio">
+          <button type="button" class="btn-buscar" onclick="cerrarModal('modal-registro-inicio')">Volver al inicio</button>
+        </div>
+      </section>
+    </div>
+  </dialog>
+
+  <dialog id="modal-confirmar-cierre-sesion" class="modal-accesible"
+    aria-labelledby="titulo-confirmar-cierre-sesion" aria-describedby="texto-confirmar-cierre-sesion">
+    <div class="modal-cabecera">
+      <div class="btn-cabecera-linea-modal">
+        <h2 class="btn-titulo-dialog" id="titulo-confirmar-cierre-sesion">Confirmar cierre de sesión</h2>
+      </div>
+      <button type="button" class="btn-cerrar-modal" aria-label="Cancelar y cerrar ventana"
+        title="Cancelar y cerrar ventana" onclick="cerrarModal(this)">×</button>
+    </div>
+    <div class="modal-cuerpo">
+      <p id="texto-confirmar-cierre-sesion">¿Seguro que quieres cerrar la sesión de tu cuenta?</p>
+      <p id="mensaje-error-cierre-sesion" class="mensaje-error-campo" role="alert" style="display: none;"></p>
+      <div class="acciones-cierre-sesion">
+        <button type="button" id="btn-cancelar-cierre-sesion" class="btn-buscar"
+          onclick="cerrarModal('modal-confirmar-cierre-sesion')">No, volver atrás</button>
+        <button type="button" id="btn-confirmar-cierre-sesion" class="btn-buscar"
+          onclick="confirmarCierreSesion()">Sí, cerrar sesión</button>
+      </div>
+    </div>
   </dialog>
 
   <dialog id="modal-info" class="modal-accesible">
@@ -393,6 +508,7 @@
   <script src="javascript/0_accesibilidad_mas_opciones.js"></script>
   <script src="javascript/0_modales.js"></script>
   <script src="javascript/0_sesion.js"></script>
+  <script src="javascript/0_registro_inicio.js"></script>
   <script src="javascript/0_menu_movil.js"></script>
 </body>
 </html>

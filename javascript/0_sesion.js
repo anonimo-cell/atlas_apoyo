@@ -18,24 +18,40 @@ function pintarBotonLogin() {
 
 async function gestionarClickLogin() {
     if (localStorage.getItem('sesionIniciada') === '1') {
-        if (!window.supabase || !window.supabase.auth) {
-            console.error('No está disponible la conexión de autenticación para cerrar sesión.');
-            return;
-        }
-
-        try {
-            const { error } = await window.supabase.auth.signOut();
-            if (error) throw error;
-            actualizarEstadoSesion(null);
-            anunciar('Has cerrado la sesión');
-        } catch (error) {
-            console.error('Error al cerrar sesión:', error);
-            anunciar('No se pudo cerrar la sesión. Inténtalo de nuevo.');
-        }
+        abrirModal('modal-confirmar-cierre-sesion');
         return;
     }
 
     abrirModal('modal-login');
+}
+
+async function confirmarCierreSesion() {
+    const boton = document.getElementById('btn-confirmar-cierre-sesion');
+    const mensajeError = document.getElementById('mensaje-error-cierre-sesion');
+
+    if (!window.supabase || !window.supabase.auth) {
+        console.error('No está disponible la conexión de autenticación para cerrar sesión.');
+        mensajeError.textContent = 'No se pudo conectar para cerrar sesión. Inténtalo de nuevo más tarde.';
+        mensajeError.style.display = 'block';
+        return;
+    }
+
+    mensajeError.style.display = 'none';
+    boton.disabled = true;
+    try {
+        const { error } = await window.supabase.auth.signOut();
+        if (error) throw error;
+        actualizarEstadoSesion(null);
+        cerrarModal('modal-confirmar-cierre-sesion');
+        anunciar('Has cerrado la sesión');
+    } catch (error) {
+        console.error('Error al cerrar sesión:', error);
+        mensajeError.textContent = 'No se pudo cerrar la sesión. Inténtalo de nuevo.';
+        mensajeError.style.display = 'block';
+        anunciar('No se pudo cerrar la sesión. Inténtalo de nuevo.');
+    } finally {
+        boton.disabled = false;
+    }
 }
 
 function nombreVisibleDe(user) {
@@ -128,6 +144,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const campoUsuario = document.getElementById('login-usuario-modal');
     const campoPass = document.getElementById('login-password-modal');
     const mensajeError = document.getElementById('mensaje-error-login-modal');
+    const modalCierreSesion = document.getElementById('modal-confirmar-cierre-sesion');
+    const mensajeErrorCierreSesion = document.getElementById('mensaje-error-cierre-sesion');
+    const botonConfirmarCierre = document.getElementById('btn-confirmar-cierre-sesion');
 
     modalLogin.addEventListener('close', () => {
         if (localStorage.getItem('sesionIniciada') !== '1') {
@@ -135,6 +154,11 @@ document.addEventListener('DOMContentLoaded', () => {
             campoPass.classList.remove('campo-error');
         }
         mensajeError.style.display = 'none';
+    });
+
+    modalCierreSesion.addEventListener('close', () => {
+        mensajeErrorCierreSesion.style.display = 'none';
+        botonConfirmarCierre.disabled = false;
     });
 
     [campoUsuario, campoPass].forEach(campo => {

@@ -3676,6 +3676,89 @@ img[role="button"] {
   width: 100% !important;
 }
 
+#modal-confirmar-cierre-sesion {
+  width: min(92vw, 480px) !important;
+  max-width: none !important;
+  padding: 0 !important;
+  border: none !important;
+  border-radius: 18px !important;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+#modal-confirmar-cierre-sesion .modal-cabecera {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin: 0 !important;
+  padding: 16px 16px 16px 28px !important;
+  background-color: var(--color-acce-borde) !important;
+  border: none !important;
+}
+
+#modal-confirmar-cierre-sesion .btn-titulo-dialog {
+  color: #fff !important;
+  font-size: 1.4rem !important;
+}
+
+#modal-confirmar-cierre-sesion .btn-cerrar-modal {
+  width: 44px !important;
+  height: 44px !important;
+  border: 2px solid #fff !important;
+  border-radius: 10px !important;
+  background-color: transparent !important;
+  color: #fff !important;
+  font-size: 1.6rem !important;
+  line-height: 1;
+}
+
+#modal-confirmar-cierre-sesion .btn-cerrar-modal:hover {
+  background-color: #fff !important;
+  color: var(--color-acce-borde) !important;
+}
+
+#modal-confirmar-cierre-sesion .modal-cuerpo {
+  padding: 24px 28px 28px !important;
+  font-family: Verdana, Geneva, sans-serif;
+}
+
+.acciones-cierre-sesion {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.acciones-cierre-sesion .btn-buscar {
+  flex: 1 1 150px;
+  width: auto !important;
+  min-height: 56px;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 12px 16px !important;
+  border: 2px solid var(--color-acce-borde) !important;
+  border-radius: 14px !important;
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+}
+
+#btn-cancelar-cierre-sesion {
+  background-color: #fff !important;
+  color: var(--color-acce-borde) !important;
+}
+
+#btn-confirmar-cierre-sesion {
+  background-color: var(--color-acce-borde) !important;
+  color: #fff !important;
+}
+
+#btn-confirmar-cierre-sesion:hover {
+  background-color: var(--color-hover-superior) !important;
+  color: #000 !important;
+}
+
 /* ---------- Distribución en pantallas grandes / pequeñas ---------- */
 @media (min-width: 1280px) {
   /* Título de los formularios centrado en una sola línea, con el icono a la
@@ -6958,4 +7041,317 @@ html.acc-espaciado p {
 
 #vista-ver .grid-capsulas > .btn-cate.enlace-pendiente {
   cursor: default;
+}
+
+#vista-ver .grid-linea-superior {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100%;
+}
+
+#vista-ver .cabecera-superior-icono,
+#vista-ver .text-linea-superior {
+  width: 100% !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+#vista-ver .titulo-linea-superior {
+  width: 100%;
+  text-align: center !important;
+}
+
+#vista-ver .grid-capsulas > .btn-cate {
+  box-shadow: var(--relieve-reposo) !important;
+  transition: transform 0.1s ease, box-shadow 0.1s ease, background-color 0.2s ease;
+}
+
+#vista-ver .grid-capsulas > a.btn-cate:hover,
+#vista-ver .grid-capsulas > a.btn-cate:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: var(--relieve-encima) !important;
+}
+
+#vista-ver .grid-capsulas > a.btn-cate:active {
+  transform: translateY(3px);
+  box-shadow: var(--relieve-pulsado) !important;
+}
+
+#btn-solicitud {
+  box-shadow: var(--relieve-reposo);
+  transition: transform 0.1s ease, box-shadow 0.1s ease, background-color 0.2s ease;
+}
+
+/* Registro integrado en la página de Inicio */
+#modal-registro-inicio {
+  width: min(94vw, 820px);
+  max-width: none;
+  max-height: 92vh;
+  padding: 0;
+  overflow: hidden;
+}
+
+#modal-registro-inicio .modal-cabecera {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 20px;
+}
+
+#modal-registro-inicio .btn-cerrar-modal {
+  flex: 0 0 48px;
+  width: 48px;
+}
+
+#modal-registro-inicio .modal-cuerpo {
+  max-height: calc(92vh - 82px);
+  padding: 18px 24px 24px;
+  overflow-y: auto;
+}
+
+#modal-registro-inicio [hidden] {
+  display: none !important;
+}
+
+#form-registro-inicio p:first-child {
+  margin-top: 0;
+}
+
+#form-registro-inicio .registro-inicio-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 20px;
+}
+
+#form-registro-inicio .form-row {
+  width: 100%;
+  margin: 0 0 18px;
+}
+
+#form-registro-inicio .form-row label,
+#registro-verificacion-inicio .form-row label {
+  display: block;
+  margin: 0 0 8px;
+  color: #263238;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+#modal-registro-inicio .input-moderno {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  min-height: 50px;
+  margin: 0;
+  padding: 10px 12px;
+  border: 2px solid #667781;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #263238;
+  font: inherit;
+}
+
+#modal-registro-inicio .input-moderno:focus {
+  outline: 3px solid #0317fa;
+  outline-offset: 2px;
+}
+
+#modal-registro-inicio .input-moderno.campo-error,
+#modal-registro-inicio .input-moderno.campo-error:focus,
+#modal-registro-inicio .btn-rela.campo-error {
+  border: 3px solid var(--form-error, #b3261e);
+  background-color: #fff5f5;
+  outline: 2px solid var(--form-error, #b3261e);
+  outline-offset: 2px;
+}
+
+#modal-registro-inicio .fila-contrasena {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+}
+
+#modal-registro-inicio .fila-contrasena input {
+  flex: 1;
+  min-width: 0;
+}
+
+#modal-registro-inicio .btn-mostrar {
+  flex: 0 0 auto;
+  min-width: 82px;
+  min-height: 50px;
+  padding: 0 12px;
+  border: 2px solid var(--color-acce-borde);
+  border-radius: 8px;
+  background-color: #fff;
+  color: var(--color-acce-borde);
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+#modal-registro-inicio .btn-mostrar:hover {
+  background-color: #e8f0f3;
+}
+
+#modal-registro-inicio .ayuda-campo {
+  margin: -4px 0 8px;
+}
+
+#modal-registro-inicio .marca-obligatorio {
+  margin-left: 3px;
+  color: var(--form-error, #b3261e);
+}
+
+#modal-registro-inicio .registro-perfil-inicio {
+  margin: 0 0 18px;
+  padding: 0;
+  border: 0;
+}
+
+#modal-registro-inicio .registro-perfil-inicio legend {
+  margin-bottom: 10px;
+  color: #263238;
+  font-weight: 700;
+}
+
+#modal-registro-inicio .registro-perfiles-inicio {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+#modal-registro-inicio .btn-rela {
+  min-height: 46px;
+  padding: 8px 12px;
+  border: 2px solid var(--color-acce-borde);
+  border-radius: 8px;
+  background-color: #fff;
+  color: #263238;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+#modal-registro-inicio .btn-rela.activ-cate {
+  background-color: var(--color-acce-borde-lateral);
+  font-weight: 700;
+}
+
+#modal-registro-inicio .mensaje-error-campo {
+  margin: 8px 0 0;
+}
+
+#modal-registro-inicio .buscar-espacio {
+  display: flex;
+  justify-content: center;
+  margin: 12px 0 0;
+}
+
+#modal-registro-inicio .btn-buscar {
+  width: min(100%, 360px);
+  min-height: 52px;
+  height: auto;
+  margin: 8px 0;
+  padding: 10px 18px;
+  border-width: 2px;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+#modal-registro-inicio .btn-buscar:disabled,
+#modal-registro-inicio .btn-mostrar:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+#modal-registro-inicio .registro-inicio-acciones {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+#modal-registro-inicio #btn-reenviar-codigo-inicio {
+  min-height: 48px;
+}
+
+#registro-verificacion-inicio h3,
+#registro-exito-inicio h3 {
+  margin: 4px 0 12px;
+  color: var(--color-titulo);
+}
+
+#registro-verificacion-inicio .form-row {
+  max-width: 420px;
+  margin: 20px auto;
+}
+
+#registro-verificacion-inicio #codigo-verificacion-inicio {
+  text-align: center;
+  letter-spacing: 0.15em;
+  font-size: 1.25rem;
+}
+
+#modal-registro-inicio .confirmacion-texto {
+  margin: 10px 0 0;
+  color: #174e34;
+  font-weight: 700;
+}
+
+@media (max-width: 640px) {
+  #modal-registro-inicio {
+    width: 94vw;
+    max-height: 94vh;
+  }
+
+  #modal-registro-inicio .modal-cabecera {
+    padding: 12px 14px;
+  }
+
+  #modal-registro-inicio .modal-cuerpo {
+    max-height: calc(94vh - 72px);
+    padding: 14px;
+  }
+
+  #form-registro-inicio .registro-inicio-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  #modal-registro-inicio .registro-inicio-acciones {
+    flex-direction: column;
+  }
+
+  #modal-registro-inicio .registro-inicio-acciones > button {
+    width: 100%;
+  }
+}
+
+#btn-solicitud:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--relieve-encima);
+}
+
+#btn-solicitud:active {
+  transform: translateY(3px);
+  box-shadow: var(--relieve-pulsado);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #vista-ver .grid-capsulas > .btn-cate,
+  #btn-solicitud {
+    transition: none;
+  }
+
+  #vista-ver .grid-capsulas > a.btn-cate:hover,
+  #vista-ver .grid-capsulas > a.btn-cate:focus-visible,
+  #vista-ver .grid-capsulas > a.btn-cate:active,
+  #btn-solicitud:hover,
+  #btn-solicitud:active {
+    transform: none;
+  }
 }

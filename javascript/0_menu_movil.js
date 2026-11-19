@@ -10,6 +10,10 @@ function opcionMenuMovil(opcion) {
         gestionarClickLogin();
         return;
     }
+    if (opcion === 'registro') {
+        abrirRegistroInicio();
+        return;
+    }
     abrirModal(opcion);
 }
 
