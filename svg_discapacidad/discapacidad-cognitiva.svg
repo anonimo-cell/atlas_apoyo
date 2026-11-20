@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-labelledby="t">
+  <title id="t">Discapacidad cognitiva</title>
+  <path d="M34 88 V69 C24 63 19 51 21 40 C24 22 40 12 56 14 C72 16 80 28 80 40 L86 53 L80 55 V64 C80 70 74 73 68 71 L62 70 V88" fill="none" stroke="#3A3436" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="#3A3436">
+    <rect x="40" y="32" width="20" height="20" rx="2"/>
+    <circle cx="50" cy="31" r="5.5"/>
+    <circle cx="61" cy="42" r="5.5"/>
+  </g>
+</svg>

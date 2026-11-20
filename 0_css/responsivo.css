@@ -46,7 +46,7 @@
   --color-multislider: #fff;
   --color-text-superior: #000;
   --color-text-superior-active: #fff;
-  --color-hover-superior: #000;
+  --color-hover-superior: #dcdcdc;
   --color-hover-superior-borde: #000;
   --color-barra-superior: #000;
   --color-barra-texto: #fff;
@@ -73,6 +73,11 @@
   /* Categorías */
   --color-cate-text: #000;
   --color-cate: #fff;
+}
+
+.alto-contraste .btn-cate:hover,
+.alto-contraste .btn-cate-4:hover {
+  background-color: #dcdcdc;
 }
 
 /* Todo lo demás (pictogramas, fotos y colores fijos) pasa a escala de grises.
@@ -523,6 +528,7 @@ button:focus:not(:focus-visible) {
 .cap-icon-cate {
   height: 80px;
   width: auto;
+  max-width: 100%;
   object-fit: contain;
 }
 
@@ -784,6 +790,7 @@ main[tabindex="-1"]:focus {
   border: 4px solid var(--color-acce-borde);
   background-color: #fff;
   color: var(--color-cate-text);
+  text-decoration: none;
   padding: 15px;
   cursor: pointer;
   display: grid;
@@ -2811,7 +2818,15 @@ main[tabindex="-1"]:focus {
 
 #modal-acce-mas .btn-titulo-dialog {
   font-weight: normal;
-  white-space: nowrap;
+  white-space: normal;
+}
+
+#modal-acce-mas .btn-cabecera-linea-modal {
+  min-width: 0;
+}
+
+#modal-acce-mas .btn-cerrar-modal {
+  flex: 0 0 auto;
 }
 
 #modal-acce-mas .cap-icon-titulo-acce {
@@ -4382,9 +4397,16 @@ img[role="button"] {
   color: #fff !important;
 }
 
-/* Sobre la cabecera oscura del inicio de sesión y sobre el fondo negro de la
-   imagen ampliada, un borde blanco para que el botón se distinga del fondo */
-:is(#cerrar#cerrar#cerrar, html) :is(#modal-login .btn-cerrar-modal, #btn-cerrar-imagen-grande) {
+/* El borde de cierre contrasta con la cabecera clara de ambos formularios. */
+:is(#cerrar#cerrar#cerrar, html) :is(
+  #modal-login .btn-cerrar-modal,
+  #modal-registro-inicio .btn-cerrar-modal
+) {
+  border-color: var(--color-acce-borde) !important;
+}
+
+/* La imagen ampliada conserva un borde blanco sobre su fondo negro. */
+:is(#cerrar#cerrar#cerrar, html) :is(#btn-cerrar-imagen-grande) {
   border-color: #fff !important;
 }
 
@@ -5167,7 +5189,7 @@ img[role="button"] {
 
   /* La cabecera superior mide unos 58px; deja espacio para que no se solape. */
   .subvista-contenido {
-    margin-top: 80px !important;
+    margin-top: 20px !important;
     min-height: calc(100vh - 136px);
   }
 
@@ -5211,7 +5233,7 @@ img[role="button"] {
     left: auto;
     bottom: 0;                                    /* ocupa todo el alto */
     margin: 0;
-    width: 400px;
+    width: 25rem;
     max-width: calc(100vw - 40px);
     height: 100vh;
     max-height: 100vh;
@@ -5232,9 +5254,9 @@ img[role="button"] {
     flex: 1;
     min-height: 0;
     overflow-y: auto;
-    grid-auto-rows: 130px;
+    grid-auto-rows: minmax(130px, auto);
     align-content: start;
-    row-gap: 32px !important;
+    row-gap: 8px !important;
     padding-top: 24px;
   }
 
@@ -6259,8 +6281,17 @@ img[role="button"] {
 }
 
 #vista-ver .cabecera-superior-icono {
+  flex-direction: row;
+  gap: 12px;
   align-items: center;
   justify-content: center;
+}
+
+#vista-ver .icono-seleccionar {
+  width: 36px;
+  height: 36px;
+  flex: 0 0 auto;
+  object-fit: contain;
 }
 
 #vista-ver .text-linea-superior,
@@ -6269,6 +6300,7 @@ img[role="button"] {
 }
 
 #vista-ver .text-linea-superior {
+  width: auto;
   align-items: center !important;
 }
 
@@ -6742,6 +6774,23 @@ img[role="button"] {
    MEJORAS DE ACCESIBILIDAD (revisión WCAG 2.2)
    ========================================================================= */
 
+button,
+[role="button"],
+.btn-cate,
+.btn-cate-4,
+#modal-login .btn-titulo-dialog,
+#modal-registro-inicio .btn-titulo-dialog,
+#form-login label,
+#form-login .mensaje-error-campo,
+#form-registro-inicio > p,
+#form-registro-inicio label,
+#form-registro-inicio legend,
+#form-registro-inicio .ayuda-campo,
+#form-registro-inicio .mensaje-error-campo {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
 /* --- Botones nativos: los antiguos <div role="button"> son ahora <button>.
    :where() no suma prioridad, así que las reglas de cada clase siguen
    mandando; esto solo quita el aspecto por defecto del navegador. --- */
@@ -7051,9 +7100,14 @@ html.acc-espaciado p {
   width: 100%;
 }
 
-#vista-ver .cabecera-superior-icono,
-#vista-ver .text-linea-superior {
+#vista-ver .cabecera-superior-icono {
   width: 100% !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+#vista-ver .text-linea-superior {
+  width: auto !important;
   align-items: center !important;
   justify-content: center !important;
 }
@@ -7066,6 +7120,10 @@ html.acc-espaciado p {
 #vista-ver .grid-capsulas > .btn-cate {
   box-shadow: var(--relieve-reposo) !important;
   transition: transform 0.1s ease, box-shadow 0.1s ease, background-color 0.2s ease;
+}
+
+#vista-ver .grid-capsulas .btn-cate-txt {
+  font-size: clamp(1.2rem, 1.45vw, 1.4rem) !important;
 }
 
 #vista-ver .grid-capsulas > a.btn-cate:hover,
@@ -7086,8 +7144,8 @@ html.acc-espaciado p {
 
 /* Registro integrado en la página de Inicio */
 #modal-registro-inicio {
-  width: min(94vw, 820px);
-  max-width: none;
+  width: min(94vw, 1000px) !important;
+  max-width: none !important;
   max-height: 92vh;
   padding: 0;
   overflow: hidden;
@@ -7354,4 +7412,293 @@ html.acc-espaciado p {
   #btn-solicitud:active {
     transform: none;
   }
+}
+
+/* Los botones de sesión se adaptan al texto ampliado y pueden envolverlo
+   cuando el espacio disponible en la cabecera es limitado. */
+.barra-superior-login .botones-login-container {
+  width: auto !important;
+  max-width: 100%;
+  min-width: 0;
+  flex-wrap: wrap !important;
+}
+
+.barra-superior-login .btn-login-header {
+  flex: 0 1 auto !important;
+  width: max-content !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  height: auto !important;
+  min-height: 44px !important;
+  padding: 6px 0.75em !important;
+  justify-content: flex-start !important;
+  text-align: left !important;
+  line-height: 1.2;
+  white-space: normal !important;
+}
+
+/* Tipografía más grande y legible en los bloques de categorías del inicio */
+#vista-ver .titulo-linea-superior {
+  font-size: clamp(1.8rem, 2.4vw, 2.2rem) !important;
+  line-height: 1.25;
+}
+
+#vista-ver .grid-capsulas .btn-cate-txt {
+  font-size: clamp(1.5rem, 1.9vw, 1.75rem) !important;
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+@media (max-width: 699px) {
+  #vista-ver .titulo-linea-superior {
+    font-size: 1.5rem !important;
+  }
+
+  #vista-ver .grid-capsulas .btn-cate-txt {
+    font-size: 1.25rem !important;
+  }
+}
+
+/* Inicio de sesión y registro comparten el mismo estilo de diálogo. */
+#modal-login,
+#modal-registro-inicio {
+  border: none !important;
+  border-radius: 18px !important;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+#modal-login .modal-cabecera,
+#modal-registro-inicio .modal-cabecera {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin: 0 !important;
+  padding: 16px 16px 16px 28px !important;
+  border: none !important;
+  background-color: var(--color-botones-superior-fondo) !important;
+}
+
+#modal-login .btn-cabecera-linea-modal,
+#modal-registro-inicio .btn-cabecera-linea-modal {
+  display: flex !important;
+  flex: 1 !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  min-width: 0;
+  padding-right: 0 !important;
+  text-align: left !important;
+}
+
+#modal-login .btn-titulo-dialog,
+#modal-registro-inicio .btn-titulo-dialog {
+  width: 100% !important;
+  margin: 0;
+  color: var(--color-botones-superior-texto) !important;
+  font-size: 1.4rem !important;
+  font-weight: 700;
+  text-align: left !important;
+}
+
+#modal-login .btn-cerrar-modal,
+#modal-registro-inicio .btn-cerrar-modal {
+  flex: 0 0 44px !important;
+  width: 44px !important;
+  height: 44px !important;
+  border: 2px solid #fff !important;
+  border-radius: 10px !important;
+  background-color: transparent !important;
+  color: #fff !important;
+  font-size: 1.6rem !important;
+  line-height: 1;
+}
+
+#modal-login .btn-cerrar-modal:hover,
+#modal-registro-inicio .btn-cerrar-modal:hover {
+  background-color: #fff !important;
+  color: var(--color-acce-borde) !important;
+}
+
+#modal-login .modal-cuerpo,
+#modal-registro-inicio .modal-cuerpo {
+  padding: 24px 28px 28px !important;
+  font-family: Verdana, Geneva, sans-serif;
+}
+
+#modal-login .btn-buscar,
+#modal-registro-inicio .btn-buscar {
+  width: min(100%, 420px) !important;
+  max-width: none !important;
+  min-height: 60px !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 14px 28px !important;
+  border: 2px solid var(--color-acce-borde) !important;
+  border-radius: 14px !important;
+  background-color: var(--color-acce-borde) !important;
+  color: #fff !important;
+  font-family: inherit;
+  font-size: 1.3rem !important;
+  font-weight: 700 !important;
+  box-shadow: 0 4px 12px rgba(32, 69, 85, 0.25);
+}
+
+#modal-registro-inicio .form-row label {
+  color: #263238;
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+#modal-registro-inicio .input-moderno {
+  min-height: 52px !important;
+  padding: 12px 14px !important;
+  border-radius: 10px !important;
+  font-size: 1.05rem !important;
+  line-height: 1.5;
+}
+
+#modal-registro-inicio .btn-mostrar {
+  min-width: 100px;
+  min-height: 52px;
+  padding: 0 16px;
+  border-radius: 10px;
+  font-size: 1rem;
+}
+
+@media (max-width: 640px) {
+  #modal-login .modal-cabecera,
+  #modal-registro-inicio .modal-cabecera {
+    padding: 12px 14px !important;
+  }
+
+  #modal-login .modal-cuerpo,
+  #modal-registro-inicio .modal-cuerpo {
+    padding: 14px !important;
+  }
+}
+
+@media (min-width: 700px) {
+  #form-registro-inicio {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 16px;
+  }
+
+  #form-registro-inicio > .registro-inicio-grid,
+  #form-registro-inicio > .form-row,
+  #form-registro-inicio > .mensaje-error-campo,
+  #form-registro-inicio > .buscar-espacio {
+    grid-column: 1 / -1;
+  }
+
+  #form-registro-inicio > .registro-perfil-inicio {
+    grid-column: 1 / -1;
+    min-width: 0;
+    margin-bottom: 12px;
+  }
+
+  #modal-registro-inicio .registro-perfiles-inicio > .btn-rela {
+    flex: 1 1 100px;
+    min-width: 0;
+  }
+}
+
+@media (min-width: 700px) and (max-height: 850px) {
+  #modal-registro-inicio {
+    max-height: calc(100vh - 16px);
+  }
+
+  #modal-registro-inicio .modal-cuerpo {
+    max-height: calc(100vh - 92px);
+    padding: 12px 20px 16px !important;
+  }
+
+  #form-registro-inicio .form-row {
+    margin-bottom: 8px;
+  }
+
+  #form-registro-inicio > .registro-perfil-inicio {
+    margin-bottom: 8px;
+  }
+
+  #modal-registro-inicio .registro-perfil-inicio legend {
+    margin-bottom: 6px;
+  }
+
+  #modal-registro-inicio .ayuda-campo {
+    margin: -4px 0 4px;
+  }
+
+  #modal-registro-inicio .registro-perfiles-inicio {
+    gap: 6px;
+  }
+
+  #modal-registro-inicio .btn-rela {
+    min-height: 40px;
+    padding: 6px 10px;
+  }
+
+  #modal-registro-inicio .input-moderno,
+  #modal-registro-inicio .btn-mostrar {
+    min-height: 46px !important;
+  }
+
+  #modal-registro-inicio .buscar-espacio {
+    margin-top: 4px;
+  }
+
+  #modal-registro-inicio .btn-buscar {
+    min-height: 48px !important;
+    padding: 10px 18px !important;
+  }
+}
+
+@media (min-width: 700px) {
+  html.acc-espaciado #modal-acce-mas .cabecera-linea-acce {
+    flex-direction: row !important;
+    gap: 8px !important;
+  }
+
+  html.acc-espaciado #modal-acce-mas .icono-acce-mas {
+    flex: 0 0 auto;
+    line-height: 1 !important;
+  }
+
+  html.acc-espaciado #modal-acce-mas .cap-icon-mini-acce {
+    flex: 0 0 auto;
+  }
+
+  html.acc-espaciado #modal-acce-mas .btn-titulo-acce {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+}
+
+#modal-acce-mas .btn-titulo-acce {
+  text-align: left !important;
+}
+
+#modal-acce-mas {
+  padding-left: 32px !important;
+  width: min(96vw, 820px) !important;
+}
+
+@media (min-width: 1280px) {
+  #modal-acce-mas {
+    width: 32rem !important;
+  }
+}
+
+body,
+body * {
+  -webkit-user-select: none !important;
+  user-select: none !important;
+}
+
+input,
+textarea,
+[contenteditable="true"] {
+  -webkit-user-select: text !important;
+  user-select: text !important;
 }

@@ -1,4 +1,4 @@
-let perfilRegistroInicio = null;
+let tipoUsuarioRegistroInicio = null;
 let registroPendienteInicio = null;
 let temporizadorReenvioInicio = null;
 
@@ -112,13 +112,30 @@ async function registrarCuentaInicio(evento) {
         errores.push(password);
     }
 
-    if (!perfilRegistroInicio) {
-        const botonPerfil = document.querySelector('#modal-registro-inicio [data-perfil]');
-        mostrarErrorRegistroInicio(botonPerfil.id, 'error-registro-perfil-inicio', 'Selecciona tu relación con el Parkinson.');
-        document.querySelectorAll('#modal-registro-inicio [data-perfil]').forEach(perfil => {
-            perfil.classList.add('campo-error');
+    if (!tipoUsuarioRegistroInicio) {
+        const botonTipoUsuario = document.querySelector('#modal-registro-inicio [data-tipo-usuario]');
+        mostrarErrorRegistroInicio(botonTipoUsuario.id, 'error-registro-tipo-usuario-inicio', 'Selecciona tu tipo de usuario.');
+        document.querySelectorAll('#modal-registro-inicio [data-tipo-usuario]').forEach(botonTipo => {
+            botonTipo.classList.add('campo-error');
         });
-        errores.push(botonPerfil);
+        errores.push(botonTipoUsuario);
+    }
+
+    const botonesDiscapacidad = Array.from(document.querySelectorAll('#modal-registro-inicio [data-discapacidad]'));
+    const discapacidadesSeleccionadas = botonesDiscapacidad
+        .filter(botonDiscapacidad => botonDiscapacidad.getAttribute('aria-pressed') === 'true')
+        .map(botonDiscapacidad => botonDiscapacidad.dataset.discapacidad);
+    if (!discapacidadesSeleccionadas.length) {
+        const primerBotonDiscapacidad = botonesDiscapacidad[0];
+        mostrarErrorRegistroInicio(
+            primerBotonDiscapacidad.id,
+            'error-registro-discapacidad-inicio',
+            'Selecciona al menos una discapacidad.'
+        );
+        botonesDiscapacidad.forEach(botonDiscapacidad => {
+            botonDiscapacidad.classList.add('campo-error');
+        });
+        errores.push(primerBotonDiscapacidad);
     }
 
     if (errores.length) {
@@ -154,7 +171,10 @@ async function registrarCuentaInicio(evento) {
         const perfil = {
             nombre: nombreValor,
             contacto: emailValor,
-            relacion: perfilRegistroInicio,
+            tipo_usuario: tipoUsuarioRegistroInicio,
+            // Conserva relacion para compatibilidad con los registros anteriores.
+            relacion: tipoUsuarioRegistroInicio,
+            discapacidades: discapacidadesSeleccionadas,
             fundacion: fundacion.value.trim(),
             fecha_envio: new Date().toISOString()
         };
@@ -183,10 +203,14 @@ async function registrarCuentaInicio(evento) {
         password.value = '';
         repetirPassword.value = '';
         fundacion.value = '';
-        perfilRegistroInicio = null;
-        document.querySelectorAll('#modal-registro-inicio [data-perfil]').forEach(perfilBoton => {
-            perfilBoton.classList.remove('activ-cate');
-            perfilBoton.setAttribute('aria-pressed', 'false');
+        tipoUsuarioRegistroInicio = null;
+        document.querySelectorAll('#modal-registro-inicio [data-tipo-usuario]').forEach(botonTipo => {
+            botonTipo.classList.remove('activ-cate', 'campo-error');
+            botonTipo.setAttribute('aria-pressed', 'false');
+        });
+        document.querySelectorAll('#modal-registro-inicio [data-discapacidad]').forEach(botonDiscapacidad => {
+            botonDiscapacidad.classList.remove('activ-cate', 'campo-error');
+            botonDiscapacidad.setAttribute('aria-pressed', 'false');
         });
     } catch (error) {
         console.error('Error al crear la cuenta:', error);
@@ -367,16 +391,28 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    document.querySelectorAll('#modal-registro-inicio [data-perfil]').forEach(boton => {
+    document.querySelectorAll('#modal-registro-inicio [data-tipo-usuario]').forEach(boton => {
         boton.addEventListener('click', () => {
-            perfilRegistroInicio = boton.dataset.perfil;
-            document.querySelectorAll('#modal-registro-inicio [data-perfil]').forEach(perfil => {
-                const seleccionado = perfil === boton;
-                perfil.classList.toggle('activ-cate', seleccionado);
-                perfil.classList.remove('campo-error');
-                perfil.setAttribute('aria-pressed', seleccionado ? 'true' : 'false');
+            tipoUsuarioRegistroInicio = boton.dataset.tipoUsuario;
+            document.querySelectorAll('#modal-registro-inicio [data-tipo-usuario]').forEach(botonTipo => {
+                const seleccionado = botonTipo === boton;
+                botonTipo.classList.toggle('activ-cate', seleccionado);
+                botonTipo.classList.remove('campo-error');
+                botonTipo.setAttribute('aria-pressed', seleccionado ? 'true' : 'false');
             });
-            document.getElementById('error-registro-perfil-inicio').hidden = true;
+            document.getElementById('error-registro-tipo-usuario-inicio').hidden = true;
+        });
+    });
+
+    document.querySelectorAll('#modal-registro-inicio [data-discapacidad]').forEach(boton => {
+        boton.addEventListener('click', () => {
+            const seleccionado = boton.getAttribute('aria-pressed') !== 'true';
+            boton.classList.toggle('activ-cate', seleccionado);
+            boton.setAttribute('aria-pressed', seleccionado ? 'true' : 'false');
+            document.querySelectorAll('#modal-registro-inicio [data-discapacidad]').forEach(botonDiscapacidad => {
+                botonDiscapacidad.classList.remove('campo-error');
+            });
+            document.getElementById('error-registro-discapacidad-inicio').hidden = true;
         });
     });
 

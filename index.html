@@ -90,6 +90,7 @@
           <div class="linea_superior">
             <div class="grid-linea-superior">
               <div class="cabecera-superior-icono">
+                <img src="svg/seleccionar.png" class="icono-seleccionar" alt="">
                 <div class="text-linea-superior">
                   <h1 class="titulo-linea-superior">Seleccionar categoría</h1>
                 </div>
@@ -101,23 +102,23 @@
             <div class="grid-capsulas">
               <div class="btn-cate enlace-pendiente" title="Enlace pendiente" aria-label="Discapacidad visual, enlace pendiente">
                 <span class="btn-cate-txt">Discapacidad visual</span>
-                <img src="svg_discapacidad/visual.webp" class="cap-icon-cate" alt="">
+                <img src="svg_discapacidad/discapacidad-visual.svg" class="cap-icon-cate" alt="">
               </div>
               <div class="btn-cate enlace-pendiente" title="Enlace pendiente" aria-label="Discapacidad motriz, enlace pendiente">
                 <span class="btn-cate-txt">Discapacidad motriz</span>
-                <img src="svg_discapacidad/motriz.png" class="cap-icon-cate" alt="">
+                <img src="svg_discapacidad/discapacidad-motriz.svg" class="cap-icon-cate" alt="">
               </div>
               <div class="btn-cate enlace-pendiente" title="Enlace pendiente" aria-label="Discapacidad auditiva, enlace pendiente">
                 <span class="btn-cate-txt">Discapacidad auditiva</span>
-                <img src="svg_discapacidad/auditiva.png" class="cap-icon-cate" alt="">
+                <img src="svg_discapacidad/discapacidad-auditiva.svg" class="cap-icon-cate" alt="">
               </div>
               <div class="btn-cate enlace-pendiente" title="Enlace pendiente" aria-label="Discapacidad cognitiva, enlace pendiente">
                 <span class="btn-cate-txt">Discapacidad cognitiva</span>
-                <img src="svg_discapacidad/cognitiva.jpg" class="cap-icon-cate" alt="">
+                <img src="svg_discapacidad/discapacidad-cognitiva.svg" class="cap-icon-cate" alt="">
               </div>
               <a class="btn-cate" href="https://anonimo-cell.github.io/atlas_apoyo_parkinson/" target="_blank" rel="noopener noreferrer">
                 <span class="btn-cate-txt">Parkinson</span>
-                <img src="svg_discapacidad/parkinson.jpg" class="cap-icon-cate" alt="">
+                <img src="svg_discapacidad/parkinson-tulipan.svg" class="cap-icon-cate" alt="">
               </a>
             </div>
           </div>
@@ -185,7 +186,7 @@
   <dialog id="modal-login" class="modal-accesible" aria-labelledby="titulo-modal-login">
     <div class="modal-cabecera">
       <div class="btn-cabecera-linea-modal">
-        <h2 class="btn-titulo-dialog" id="titulo-modal-login">Iniciar sesión</h2>
+        <h2 class="btn-titulo-dialog" id="titulo-modal-login">Introduce tus datos</h2>
       </div>
       <button type="button" class="btn-cerrar-modal" aria-label="Cerrar ventana" title="Cerrar ventana"
         onclick="cerrarModal(this)">×</button>
@@ -218,14 +219,13 @@
   <dialog id="modal-registro-inicio" class="modal-accesible" aria-labelledby="titulo-registro-inicio">
     <div class="modal-cabecera">
       <div class="btn-cabecera-linea-modal">
-        <h2 class="btn-titulo-dialog" id="titulo-registro-inicio">Crear cuenta</h2>
+        <h2 class="btn-titulo-dialog" id="titulo-registro-inicio">Introduce tus datos</h2>
       </div>
       <button type="button" class="btn-cerrar-modal" aria-label="Cerrar registro" title="Cerrar registro"
         onclick="cerrarModal(this)">×</button>
     </div>
     <div class="modal-cuerpo">
       <form id="form-registro-inicio" novalidate>
-        <p>Completa tus datos para crear una cuenta. Los campos con * son obligatorios.</p>
         <div class="registro-inicio-grid">
           <div class="form-row">
             <label for="registro-nombre-inicio">Nombre de usuario:<span class="marca-obligatorio" aria-hidden="true">*</span></label>
@@ -241,10 +241,9 @@
           </div>
           <div class="form-row">
             <label for="registro-password-inicio">Contraseña:<span class="marca-obligatorio" aria-hidden="true">*</span></label>
-            <p id="ayuda-password-registro-inicio" class="ayuda-campo">Mínimo 6 caracteres.</p>
             <div class="fila-contrasena">
               <input type="password" id="registro-password-inicio" class="input-moderno"
-                placeholder="Introducir contraseña" autocomplete="new-password" aria-describedby="ayuda-password-registro-inicio" required>
+                placeholder="Introducir contraseña" autocomplete="new-password" required>
               <button type="button" class="btn-mostrar" data-password-toggle="registro-password-inicio">Mostrar<span class="sr-only"> contraseña</span></button>
             </div>
           </div>
@@ -260,15 +259,27 @@
         </div>
 
         <fieldset class="registro-perfil-inicio">
-          <legend>Relación con el Parkinson:<span class="marca-obligatorio" aria-hidden="true">*</span></legend>
+          <legend>Tipo de usuario:<span class="marca-obligatorio" aria-hidden="true">*</span></legend>
           <div class="registro-perfiles-inicio">
-            <button type="button" id="registro-perfil-paciente-inicio" class="btn-rela" data-perfil="paciente" aria-pressed="false">Paciente</button>
-            <button type="button" class="btn-rela" data-perfil="terapeuta" aria-pressed="false">Terapeuta ocupacional</button>
-            <button type="button" class="btn-rela" data-perfil="familiar" aria-pressed="false">Familiar o cercano</button>
-            <button type="button" class="btn-rela" data-perfil="cuidador" aria-pressed="false">Cuidador</button>
-            <button type="button" class="btn-rela" data-perfil="otro" aria-pressed="false">Otro</button>
+            <button type="button" id="registro-tipo-paciente-inicio" class="btn-rela" data-tipo-usuario="paciente" aria-pressed="false">Paciente</button>
+            <button type="button" class="btn-rela" data-tipo-usuario="terapeuta" aria-pressed="false">Terapeuta ocupacional</button>
+            <button type="button" class="btn-rela" data-tipo-usuario="familiar" aria-pressed="false">Familiar o cercano</button>
+            <button type="button" class="btn-rela" data-tipo-usuario="cuidador" aria-pressed="false">Cuidador</button>
+            <button type="button" class="btn-rela" data-tipo-usuario="otro" aria-pressed="false">Otro</button>
           </div>
-          <p id="error-registro-perfil-inicio" class="mensaje-error-campo" role="alert" hidden></p>
+          <p id="error-registro-tipo-usuario-inicio" class="mensaje-error-campo" role="alert" hidden></p>
+        </fieldset>
+
+        <fieldset class="registro-perfil-inicio">
+          <legend>Discapacidad (opción múltiple):<span class="marca-obligatorio" aria-hidden="true">*</span></legend>
+          <div class="registro-perfiles-inicio">
+            <button type="button" id="registro-discapacidad-visual-inicio" class="btn-rela" data-discapacidad="visual" aria-pressed="false">Visual</button>
+            <button type="button" class="btn-rela" data-discapacidad="auditiva" aria-pressed="false">Auditiva</button>
+            <button type="button" class="btn-rela" data-discapacidad="cognitiva" aria-pressed="false">Cognitiva</button>
+            <button type="button" class="btn-rela" data-discapacidad="parkinson" aria-pressed="false">Parkinson</button>
+            <button type="button" class="btn-rela" data-discapacidad="otros" aria-pressed="false">Otros</button>
+          </div>
+          <p id="error-registro-discapacidad-inicio" class="mensaje-error-campo" role="alert" hidden></p>
         </fieldset>
 
         <div class="form-row">
@@ -340,15 +351,13 @@
         onclick="cerrarModal(this)">×</button>
     </div>
     <div class="modal-cuerpo">
-      <p>Hola, te damos la bienvenida a Atlas de apoyo Parkinson.</p>
-      <p>Atlas de apoyo Parkinson es una página web para compartir soluciones útiles para personas con Parkinson.</p>
-      <p>Aquí, las personas con Parkinson, sus familias y sus terapeutas pueden buscar y subir productos
-        que les han sido útiles. Así ayudan a otras personas que tienen las mismas dificultades.</p>
-      <p>En Atlas de apoyo Parkinson vas a encontrar 2 tipos de productos de apoyo:</p>
+      <p>Hola, te damos la bienvenida a Atlas de productos de apoyo.</p>
+      <p>Atlas de apoyo es una plataforma colaborativa para compartir soluciones útiles para personas con discapacidad.</p>
+      <p>Aquí, las personas con cualquier tipo de discapacidad, sus familias y sus terapeutas pueden buscar y recomendar productos de apoyo y así compartir su conocimiento y ayudar a otras personas en su situación.</p>
+      <p>Aquí vas a encontrar 2 tipos de productos de apoyo:</p>
       <ul class="lista-info">
         <li><strong>Productos comercializados:</strong> se venden en tiendas y cualquiera los puede comprar.</li>
-        <li><strong>Productos de bajo coste:</strong> son productos caseros hechos con materiales fáciles de conseguir.
-          Cada uno tiene un tutorial con los pasos para que tú también puedas hacerlo.</li>
+        <li><strong>Productos de bajo coste:</strong> tutoriales sencillos para fabricar productos de apoyo.</li>
       </ul>
       <p>¡Muchas gracias!</p>
     </div>
@@ -366,8 +375,7 @@
     <div class="modal-cuerpo">
       <p>Página web desarrollada por <b>Celia Sáez De La Peña</b></p>
       <p>En colaboración con Fundación Parkinson Madrid, Universidad Politécnica de Madrid y Universidad Rey Juan Carlos</p>
-      <p>Los símbolos pictográficos utilizados son propiedad del Gobierno de Aragón y han sido creados por Sergio Palao
-        para ARASAAC (http://www.arasaac.org), que los distribuye bajo Licencia Creative Commons BY-NC-SA.</p>
+      <p>Los símbolos pictográficos utilizados son propiedad del Gobierno de Aragón y han sido creados por Sergio Palao para ARASAAC..</p>
       <div class="logos-agradecimientos">
         <img loading="lazy" decoding="async" src="logos/asociacion-parkinson-madrid.png" alt="Asociación Parkinson Madrid">
         <img loading="lazy" decoding="async" src="logos/upm.png" alt="Universidad Politécnica de Madrid">
@@ -387,7 +395,7 @@
     </div>
     <div class="modal-cuerpo">
       <p>Escríbenos si tienes dudas o quieres contarnos tus ideas.</p>
-      <p>Email: <a class="enlace-email" href="mailto:epuntoweb@gmail.com">epuntoweb@gmail.com</a></p>
+      <p>Email: <a class="enlace-email" href="mailto:atlasproductoapoyo@gmail.com">atlasproductoapoyo@gmail.com</a></p>
     </div>
   </dialog>
 
@@ -473,7 +481,7 @@
               <path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"></path>
             </svg>
           </span>
-          <span class="btn-titulo-acce">Resaltar enlaces y botones</span>
+          <span class="btn-titulo-acce">Resaltar enlaces</span>
         </span>
       </button>
       <button type="button" class="side-btn-acce" aria-pressed="false" data-acc-opcion="espaciado">
