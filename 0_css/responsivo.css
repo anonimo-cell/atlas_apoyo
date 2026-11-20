@@ -4999,9 +4999,12 @@ img[role="button"] {
     margin-top: 20px !important;
   }
 
-  .lateral_acce,
-  .lateral_izq {
+  .lateral_acce {
     top: 140px !important;
+  }
+
+  .lateral_izq {
+    top: 100px !important;
   }
 }
 
@@ -5029,7 +5032,7 @@ img[role="button"] {
   }
 
   .grid-lateral-izq {
-    gap: 40px;
+    gap: 60px;
   }
 
   /* Botones altos: más fáciles de acertar con temblor (objetivo táctil amplio) */
@@ -5194,7 +5197,7 @@ img[role="button"] {
   }
 
   .lateral_izq {
-    top: 160px !important;
+    top: 100px !important;
   }
 }
 
@@ -7655,6 +7658,10 @@ html.acc-espaciado p {
 }
 
 @media (min-width: 700px) {
+  #modal-acce-mas .grid-acce-mas {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
   html.acc-espaciado #modal-acce-mas .cabecera-linea-acce {
     flex-direction: row !important;
     gap: 8px !important;
@@ -7701,4 +7708,12 @@ textarea,
 [contenteditable="true"] {
   -webkit-user-select: text !important;
   user-select: text !important;
+}
+
+#modal-login input:focus:not(.campo-error),
+#modal-registro-inicio input:focus:not(.campo-error) {
+  border: 6px solid var(--color-hover-superior-borde) !important;
+  outline: 3px solid var(--color-acce-borde) !important;
+  outline-offset: 2px !important;
+  box-shadow: none !important;
 }
