@@ -4412,20 +4412,11 @@ img[role="button"] {
 
 /* =========================================================================
    =========================================================================
-   5. TABLETS (de 700px a 1279px de ancho, en vertical y en horizontal)
-   Parte del diseño de móvil y lo adapta a una pantalla más grande:
-   - Arriba: eslogan e inicio de sesión en una fila, y debajo los botones
-     "Menú de accesibilidad" y "Menú de ayuda" uno al lado del otro.
-   - Abajo: menú principal fijo (fácil de alcanzar con los pulgares) con
-     icono, título y subtítulo.
-   - Se muestran las migas de pan y el botón de volver.
-   - Más columnas: categorías en 3 (4 en horizontal), catálogo en 2 (3 en
-     horizontal) y formularios a dos columnas.
-   Los móviles en horizontal (menos de 500px de alto) siguen con el diseño
-   de móvil.
+   5. ESTILOS ANTIGUOS DE TABLET (conservados como referencia)
+   Están desactivados: tablet y móvil usan ahora el mismo diseño.
    =========================================================================
    ========================================================================= */
-@media (min-width: 700px) and (max-width: 1279px) and (min-height: 500px) {
+@media (min-width: 1280px) and (max-width: 1279px) and (min-height: 500px) {
 
   /* ---------- 1. Estructura general ---------- */
   body {
@@ -4812,8 +4803,8 @@ img[role="button"] {
   }
 }
 
-/* ---------- Tablet en horizontal (1024px a 1279px): una columna más ---------- */
-@media (min-width: 1024px) and (max-width: 1279px) and (min-height: 500px) {
+/* Estilos antiguos de tablet, desactivados: tablet usa el diseño móvil. */
+@media (min-width: 1280px) and (max-width: 1279px) and (min-height: 500px) {
   .grid-capsulas:has(> .btn-cate-4) {
     grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
   }
@@ -4823,9 +4814,8 @@ img[role="button"] {
   }
 }
 
-/* Tablet en horizontal: el buscador va en la misma fila que el título,
-   para ahorrar altura (la pantalla es más ancha que alta) */
-@media (min-width: 1024px) and (max-width: 1279px) and (min-height: 500px) {
+/* Estilo antiguo de tablet, desactivado: tablet usa el diseño móvil. */
+@media (min-width: 1280px) and (max-width: 1279px) and (min-height: 500px) {
   .grid-linea-superior {
     grid-template-columns: 90px 1fr minmax(240px, 320px);
     grid-template-areas:
@@ -4847,8 +4837,8 @@ img[role="button"] {
   }
 }
 
-/* Tablet: ajustes tras revisar las capturas */
-@media (min-width: 700px) and (max-width: 1279px) and (min-height: 500px) {
+/* Estilos antiguos de tablet, desactivados: tablet usa el diseño móvil. */
+@media (min-width: 1280px) and (max-width: 1279px) and (min-height: 500px) {
   /* Las rejillas de tarjetas usan todo el ancho de la pantalla */
   .categorias {
     width: 100% !important;
@@ -4905,8 +4895,8 @@ img[role="button"] {
   line-height: 1;
 }
 
-/* Tablet: el menú de accesibilidad y el de ayuda se ajustan a su contenido */
-@media (min-width: 700px) and (max-width: 1279px) and (min-height: 500px) {
+/* Estilo antiguo de tablet, desactivado: tablet usa el diseño móvil. */
+@media (min-width: 1280px) and (max-width: 1279px) and (min-height: 500px) {
   #modal-accesibilidad[open],
   #modal-menu-ayuda[open] {
     height: auto !important;
@@ -5125,7 +5115,7 @@ img[role="button"] {
   background: url("../svg/login/registro.svg") no-repeat center / contain;
 }
 
-@media (min-width: 700px) {
+@media (min-width: 1280px) {
   .barra-superior-login .botones-login-container {
     gap: 28px !important;
   }
@@ -5370,7 +5360,7 @@ img[role="button"] {
   flex: none;
 }
 
-@media (max-width: 699px) {
+@media (max-width: 1279px) {
   #vista-productos-final .contenedor-slider-filtros {
     gap: 8px;
   }
@@ -5471,7 +5461,7 @@ img[role="button"] {
 }
 
 /* En el móvil no cabe: ahí sí se parte, para que no se salga de la pantalla */
-@media (max-width: 700px) {
+@media (max-width: 1279px) {
   .titulo-linea-superior {
     white-space: normal;
   }
@@ -5579,7 +5569,7 @@ img[role="button"] {
   margin-top: 48px !important;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 1279px) {
   #vista-detalle-verproducto .titulo-linea-superior,
   #vista-detalle-verproductocom .titulo-linea-superior {
     font-size: 1.3rem !important;
@@ -5690,7 +5680,7 @@ img[role="button"] {
 }
 
 /* =========================================================================
-   MÓVIL (menos de 700px): versión revisada
+   MÓVIL Y TABLET (menos de 1280px): misma versión
    - Arriba, accesibilidad y ayuda comparten una sola franja fija
    - Textos y botones de la cabecera legibles y fáciles de pulsar
    - Vuelve el botón de volver junto al título
@@ -5698,7 +5688,7 @@ img[role="button"] {
    - Menú inferior con texto legible
    (Objetivo táctil mínimo de 44px: pensado para temblor)
    ========================================================================= */
-@media (max-width: 699px) {
+@media (max-width: 1279px) {
 
   body {
     padding-top: 56px;
@@ -5914,7 +5904,7 @@ img[role="button"] {
 }
 
 /* Móvil: sin el lema en la cabecera, solo los botones de sesión */
-@media (max-width: 699px) {
+@media (max-width: 1279px) {
   .barra-superior-login .eslogan-barra {
     display: none !important;
   }
@@ -5928,7 +5918,7 @@ img[role="button"] {
   display: none;
 }
 
-@media (max-width: 699px) {
+@media (max-width: 1279px) {
   /* Lo que ahora va dentro del menú deja de verse suelto */
   .btn-top-acce,
   .btn-scroll-ayuda,
@@ -6064,7 +6054,7 @@ img[role="button"] {
 }
 
 /* Móvil: ☰ a la izquierda (solo icono) y logo + EPunto a la derecha */
-@media (max-width: 699px) {
+@media (max-width: 1279px) {
   .barra-movil {
     justify-content: space-between;
   }
@@ -6097,7 +6087,7 @@ img[role="button"] {
 }
 
 /* Móvil: logo + EPunto en el centro de la franja (el ☰ sigue a la izquierda) */
-@media (max-width: 699px) {
+@media (max-width: 1279px) {
   .marca-movil {
     position: absolute;
     left: 50%;
@@ -6125,7 +6115,7 @@ img[role="button"] {
   transform: none !important;
 }
 
-@media (max-width: 699px) {
+@media (max-width: 1279px) {
   :is(#marca#marca#marca#marca, html) .barra-movil .marca-movil:not(:disabled),
   :is(#marca#marca#marca#marca, html) .barra-movil .marca-movil:not(:disabled):is(:hover, :active) {
     transform: translateX(-50%) !important;
@@ -6137,7 +6127,7 @@ img[role="button"] {
    barra fija de abajo a la parte de arriba, como pestañas. En sus dos
    pantallas se quita el título, que repetía lo mismo que la pestaña activa.
    ========================================================================= */
-@media (max-width: 699px) {
+@media (max-width: 1279px) {
   body {
     padding-bottom: 24px !important;
   }
@@ -6196,7 +6186,7 @@ img[role="button"] {
 
 /* Móvil: pestañas del menú principal más compactas y del ancho completo
    de su columna (heredaban width: 20% y el texto se salía del botón) */
-@media (max-width: 699px) {
+@media (max-width: 1279px) {
   .multi-slider {
     gap: 8px !important;
     padding: 8px 12px 0 !important;
@@ -6226,7 +6216,7 @@ img[role="button"] {
   display: none;
 }
 
-@media (max-width: 699px) {
+@media (max-width: 1279px) {
   .texto-largo-menu {
     display: none;
   }
@@ -6238,7 +6228,7 @@ img[role="button"] {
 
 /* Móvil: mismo corte que en ordenador (sensación de slider): esquinas
    interiores poco redondeadas y extremos exteriores en forma de píldora */
-@media (max-width: 699px) {
+@media (max-width: 1279px) {
   .multi-slider .btn-menu {
     border-radius: 10px !important;
     min-height: 52px !important;
@@ -6256,7 +6246,7 @@ img[role="button"] {
   }
 }
 
-@media (min-width: 700px) {
+@media (min-width: 1280px) {
   #vista-ver .grid-linea-superior {
     grid-template-columns: minmax(0, 1fr);
     grid-template-rows: auto;
@@ -6428,7 +6418,7 @@ img[role="button"] {
 
 /* Móvil: en el menú de accesibilidad, "Aumento letra" y "Reducir letra"
    comparten fila; el resto de opciones siguen ocupando todo el ancho */
-@media (max-width: 699px) {
+@media (max-width: 1279px) {
   #modal-acce-mas .grid-acce-mas {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     gap: 16px !important;
@@ -6455,7 +6445,7 @@ img[role="button"] {
 
 /* Móvil: menú de accesibilidad con dos botones por fila, todos iguales
    (anula lo de "A+ y A− en una fila y el resto a todo el ancho") */
-@media (max-width: 699px) {
+@media (max-width: 1279px) {
   #modal-acce-mas .grid-acce-mas > .side-btn-acce,
   #modal-acce-mas .grid-acce-mas > #btn-aumentar,
   #modal-acce-mas .grid-acce-mas > #btn-reducir {
@@ -6472,7 +6462,7 @@ img[role="button"] {
 
 /* Móvil: logos de Agradecimientos uno debajo de otro y más grandes
    (en una sola fila salían diminutos) */
-@media (max-width: 699px) {
+@media (max-width: 1279px) {
   .logos-agradecimientos {
     flex-direction: column;
     gap: 24px;
@@ -6674,7 +6664,7 @@ img[role="button"] {
 }
 
 /* Móvil: el embudo un poco más pequeño para que quepa junto al slider */
-@media (max-width: 699px) {
+@media (max-width: 1279px) {
   .fila-slider-filtros {
     gap: 8px;
     padding: 0 12px;
@@ -6694,7 +6684,7 @@ img[role="button"] {
   display: none;
 }
 
-@media (max-width: 699px) {
+@media (max-width: 1279px) {
   #vista-productos-final .grid-linea-superior {
     grid-template-areas:
       "volver titulo ."
@@ -6722,7 +6712,7 @@ img[role="button"] {
 /* Móvil, catálogo: buscador más estrecho y sin el texto "Buscar producto"
    (queda la lupa; el lector de pantalla sigue diciendo "Buscar producto").
    Se pega al embudo para que los dos queden juntos a la derecha. */
-@media (max-width: 699px) {
+@media (max-width: 1279px) {
   #vista-productos-final .grid-linea-superior > .caja-contenedor-busqueda {
     width: min(100%, 240px) !important;
     justify-self: end;
@@ -6736,7 +6726,7 @@ img[role="button"] {
 /* Móvil, catálogo: el buscador se queda en solo la lupa (mismo tamaño que
    el embudo). Al pulsarlo se abre a todo el ancho para escribir y, al salir
    sin texto, vuelve a ser solo la lupa. */
-@media (max-width: 699px) {
+@media (max-width: 1279px) {
   #vista-productos-final .grid-linea-superior > .caja-contenedor-busqueda {
     width: 52px !important;
     justify-self: end;
@@ -6982,7 +6972,7 @@ html.acc-espaciado p {
 
 /* Móvil, catálogo: mientras el buscador está plegado (solo la lupa) el
    botón no se ve; aparece al abrirlo para escribir */
-@media (max-width: 699px) {
+@media (max-width: 1279px) {
   #vista-productos-final .caja-contenedor-busqueda .btn-lanzar-busqueda {
     display: none;
   }
@@ -7020,7 +7010,7 @@ html.acc-espaciado p {
 /* Móvil: no hay sitio para la palabra junto al pictograma de la cabecera,
    así que solo se ve la flecha; la palabra "Volver" la sigue leyendo el
    lector de pantalla (oculta solo a la vista, como .sr-only) */
-@media (max-width: 699px) {
+@media (max-width: 1279px) {
   :is(#volver#volver, html) .grid-linea-superior > .btn-volver {
     padding: 8px 12px !important;
   }
@@ -7045,7 +7035,7 @@ html.acc-espaciado p {
 
 /* Móvil: "Atlas de apoyo Parkinson" es largo; en vez de centrarlo en la
    pantalla (se montaba sobre el ☰) se centra en el hueco que queda a su derecha */
-@media (max-width: 699px) {
+@media (max-width: 1279px) {
   :is(#marca#marca#marca#marca#marca, html) .barra-movil .marca-movil,
   :is(#marca#marca#marca#marca#marca, html) .barra-movil .marca-movil:is(:hover, :active) {
     position: static;
@@ -7060,7 +7050,7 @@ html.acc-espaciado p {
 }
 
 /* Pantallas muy estrechas: si no cabe, el nombre pasa a dos líneas en vez de cortarse */
-@media (max-width: 699px) {
+@media (max-width: 1279px) {
   .marca-movil-nombre {
     white-space: normal;
     line-height: 1.15;
@@ -7364,7 +7354,7 @@ html.acc-espaciado p {
   font-weight: 700;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 1279px) {
   #modal-registro-inicio {
     width: 94vw;
     max-height: 94vh;
@@ -7452,7 +7442,7 @@ html.acc-espaciado p {
   line-height: 1.25;
 }
 
-@media (max-width: 699px) {
+@media (max-width: 1279px) {
   #vista-ver .titulo-linea-superior {
     font-size: 1.5rem !important;
   }
@@ -7569,7 +7559,7 @@ html.acc-espaciado p {
   font-size: 1rem;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 1279px) {
   #modal-login .modal-cabecera,
   #modal-registro-inicio .modal-cabecera {
     padding: 12px 14px !important;
@@ -7581,7 +7571,7 @@ html.acc-espaciado p {
   }
 }
 
-@media (min-width: 700px) {
+@media (min-width: 1280px) {
   #form-registro-inicio {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -7607,7 +7597,7 @@ html.acc-espaciado p {
   }
 }
 
-@media (min-width: 700px) and (max-height: 850px) {
+@media (min-width: 1280px) and (max-height: 850px) {
   #modal-registro-inicio {
     max-height: calc(100vh - 16px);
   }
@@ -7657,7 +7647,7 @@ html.acc-espaciado p {
   }
 }
 
-@media (min-width: 700px) {
+@media (min-width: 1280px) {
   #modal-acce-mas .grid-acce-mas {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
